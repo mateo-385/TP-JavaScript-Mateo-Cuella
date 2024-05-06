@@ -1,8 +1,7 @@
 //Pido al usuario tres números y los muestro por consola
-//También agrego un control en caso de que los inputs no sean números o contengan letras
-let input1 = prompt("Ingrese el primer número").trim();
+let input1 = prompt("Ingrese el primer número").replace(",", ".").trim();
 num1 = parseFloat(input1);
-
+//Control en caso de que los inputs no sean números o contengan letras
 while (isNaN(num1) || input1 !== num1.toString()) {
   console.log("Ingrese un número válido");
   input1 = prompt("Ingrese el primer número");
@@ -30,9 +29,23 @@ while (isNaN(num3) || input3 !== num3.toString()) {
 }
 console.log(num3);
 
-//Agrego los números dentro de un array
-let numeros = [num1, num2, num3];
-
-//Muestro por consola el array ordenado de menor a mayor con la función sort(), la cual tiene una función de comparación que se asegura de ordernar números de manera correcta y no en función al orden de caracteres de Unicode
-//Lo convierto en string y separo cada número con coma y espacio con join()
-console.log("Orden ascendente:", numeros.sort((a, b) => a - b).join(", "));
+//Muestro los números por consola dependiendo de su orden
+if (num1 < num2) {
+  if (num2 < num3) {
+    console.log(`En orden ascendente: ${num1}, ${num2}, ${num3}`);
+  } else {
+    console.log(`En orden ascendente: ${num1}, ${num3}, ${num2}`);
+  }
+} else if (num2 < num1 && num2 < num3) {
+  if (num1 < num3) {
+    console.log(`En orden ascendente: ${num2}, ${num1}, ${num3}`);
+  } else {
+    console.log(`En orden ascendente: ${num2}, ${num3}, ${num1}`);
+  }
+} else if (num3 < num2 && num3 < num1) {
+  if (num2 < num1) {
+    console.log(`En orden ascendente: ${num3}, ${num2}, ${num1}`);
+  } else {
+    console.log(`En orden ascendente: ${num3}, ${num1}, ${num2}`);
+  }
+}

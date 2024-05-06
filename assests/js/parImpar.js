@@ -1,8 +1,8 @@
 // Pido al usuario un numero y lo convierto a decimal, en caso de tener comas, las reemplaza por puntos
-let input = prompt("Ingrese un número").replace(",", ".");
+let input = prompt("Ingrese un número").replace(",", ".").trim();
 let numero = parseFloat(input);
 
-//Control que pide nuevamente al usuario que ingrese un número si el input no es un número o contiene espacios y/o letras
+//Control que repite el prompt en caso de que el input sea diferente al número convertido en string. ej: "123abc" != "123" o no sea un número
 while (isNaN(numero) || input !== numero.toString()) {
   console.log("Ingrese un número válido");
   input = prompt("Ingrese un número").replace(",", ".");
